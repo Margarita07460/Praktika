@@ -25,8 +25,11 @@ int main()
 		array[i] = rand() - rand();
 		printf("%5d  ", array[i]);
 	}
+	printf("\n");
 
+	time_t start = clock();                //время до сортировки
 
+	long count = 0;
 	for (int i = 1; i < size; i++)
 	{
 		m = array[i];
@@ -36,12 +39,21 @@ int main()
 				break;
 			array[j + 1] = array[j];
 			array[j] = m;
+			count++;
 		}
 	}
-
+	time_t stop = clock();             //время после сортировки
 	for (int i = 0; i < size; i++) {
 		printf("%d  ", array[i]);
 	}
+
+	double time = (stop - start) / 1000.0;    //время сортировки
+	printf("\n");
+	printf("Время выполнения сортировки: ");
+	printf("%lf\n", time);
+	printf("Количество перестановок: ");
+	printf("%o\n", count);
+
 
 
 
@@ -57,7 +69,11 @@ int main()
 		array[i] = rand() - rand();
 		printf("5%d  ", array[i]);
 	}
+	printf("\n");
 
+	start = clock();                //время до сортировки
+
+	count = 0;
 	for (int i = 1; i < size; i++)
 	{
 		m = array[i];
@@ -68,12 +84,19 @@ int main()
 
 			array[j + 1] = array[j];
 			array[j] = m;
+			count++;
 		}
 	}
-
+	stop = clock();             //время после сортировки
 	for (int i = 0; i < size; i++) {
 		printf("%5d  ", array[i]);
 	}
+	time = (stop - start) / 1000.0;    //время сортировки
+	printf("\n");
+	printf("Время выполнения сортировки: ");
+	printf("%lf\n", time);
+	printf("Количество перестановок: ");
+	printf("%o\n", count);
 
 
 	//Сортировка возрастающих значений по убыванию
@@ -89,7 +112,11 @@ int main()
 		array[i + 1] = array[i] + rand() % 100 + 100;
 		printf("%5d  ", array[i]);
 	}
+	printf("\n");
 
+	start = clock();                //время до сортировки
+
+	count = 0;
 	for (int i = 1; i < size; i++)
 	{
 		m = array[i];
@@ -100,12 +127,20 @@ int main()
 
 			array[j + 1] = array[j];
 			array[j] = m;
+			count++;
 		}
 	}
-
+	stop = clock();             //время после сортировки
 	for (int i = 0; i < size; i++) {
 		printf("%5d  ", array[i]);
 	}
+	time = (stop - start) / 1000.0;    //время сортировки
+	printf("\n");
+	printf("Время выполнения сортировки: ");
+	printf("%lf\n", time);
+	printf("Количество перестановок: ");
+	printf("%o\n", count);
+
 
 
 	//Сортировка возрастающих значений по возрастанию
@@ -121,7 +156,11 @@ int main()
 		array[i + 1] = array[i] + rand() % 100 + 100;
 		printf("%5d  ", array[i]);
 	}
+	printf("\n");
 
+	start = clock();                //время до сортировки
+
+	count = 0;
 	for (int i = 1; i < size; i++)
 	{
 		m = array[i];
@@ -132,12 +171,21 @@ int main()
 
 			array[j + 1] = array[j];
 			array[j] = m;
+			count++;
 		}
 	}
-
+	stop = clock();             //время после сортировки
 	for (int i = 0; i < size; i++) {
 		printf("%5d  ", array[i]);
 
+
 	}
+	time = (stop - start) / 1000.0;    //время сортировки
+	printf("\n");
+	printf("Время выполнения сортировки: ");
+	printf("%lf\n", time);
+	printf("Количество перестановок: ");
+	printf("%o\n", count);
+
 
 }

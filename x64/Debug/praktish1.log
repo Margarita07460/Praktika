@@ -1,3 +1,3 @@
 ﻿  Source.cpp
-C:\Users\Вика\Desktop\praktish1\Source.cpp(11,12): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
-  praktish1.vcxproj -> C:\Users\Вика\Desktop\praktish1\x64\Debug\praktish1.exe
+d:\Pr\Praktika\Source.cpp(11,12): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+  praktish1.vcxproj -> D:\Pr\Praktika\x64\Debug\praktish1.exe
