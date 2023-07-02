@@ -10,6 +10,7 @@ int main()
 	setlocale(LC_ALL, "Russian");
 	srand(time(NULL));
 
+	FILE* f;
 	int m, size;
 	int* array;
 
@@ -19,13 +20,18 @@ int main()
 	scanf("%d", &size);
 	printf("\n");
 	array = (int*)malloc(size * sizeof(int));
+	printf("ћассив случайных чисел: 'input.txt'\n");
+	f = fopen("input.txt", "w");
 
 	for (int i = 0; i < size; i++)
 	{
 		array[i] = rand() - rand();
-		printf("%5d  ", array[i]);
+		fprintf(f, "%d  ", array[i]);
 	}
-	printf("\n");
+	fclose(f);
+	printf("ќтсортированный массив: 'output.txt'\n");
+
+	f = fopen("output.txt", "w");
 
 	time_t start = clock();                //врем€ до сортировки
 
@@ -44,9 +50,9 @@ int main()
 	}
 	time_t stop = clock();             //врем€ после сортировки
 	for (int i = 0; i < size; i++) {
-		printf("%d  ", array[i]);
+		fprintf(f, "%d  ", array[i]);
 	}
-
+	fclose(f);
 	double time = (stop - start) / 1000.0;    //врем€ сортировки
 	printf("\n");
 	printf("¬рем€ выполнени€ сортировки: ");
@@ -64,13 +70,18 @@ int main()
 	printf("\n");
 	array = (int*)malloc(size * sizeof(int));
 
+	printf("ћассив случайных чисел: 'input.txt'\n");
+	f = fopen("input.txt", "w");
 	for (int i = 0; i < size; i++)
 	{
 		array[i] = rand() - rand();
-		printf("5%d  ", array[i]);
+		fprintf(f, "%d  ", array[i]);
 	}
+	fclose(f);
 	printf("\n");
 
+	printf("ќтсортированный массив: 'output.txt'\n");
+	f = fopen("output.txt", "w");
 	start = clock();                //врем€ до сортировки
 
 	count = 0;
@@ -89,8 +100,9 @@ int main()
 	}
 	stop = clock();             //врем€ после сортировки
 	for (int i = 0; i < size; i++) {
-		printf("%5d  ", array[i]);
+		fprintf(f, "%d  ", array[i]);
 	}
+	fclose(f);
 	time = (stop - start) / 1000.0;    //врем€ сортировки
 	printf("\n");
 	printf("¬рем€ выполнени€ сортировки: ");
@@ -106,14 +118,17 @@ int main()
 	printf("\n");
 	array = (int*)malloc(size * sizeof(int));
 
+	printf("ћассив случайных чисел: 'input.txt'\n");
 	array[0] = rand();
+	f = fopen("input.txt", "w");
 	for (int i = 0; i < size; i++)
 	{
 		array[i + 1] = array[i] + rand() % 100 + 100;
-		printf("%5d  ", array[i]);
+		fprintf(f, "%d  ", array[i]);
 	}
-	printf("\n");
-
+	fclose(f);
+	printf("ќтсортированный массив: 'output.txt'\n");
+	f = fopen("output.txt", "w");
 	start = clock();                //врем€ до сортировки
 
 	count = 0;
@@ -132,8 +147,9 @@ int main()
 	}
 	stop = clock();             //врем€ после сортировки
 	for (int i = 0; i < size; i++) {
-		printf("%5d  ", array[i]);
+		fprintf(f, "%d  ", array[i]);
 	}
+	fclose(f);
 	time = (stop - start) / 1000.0;    //врем€ сортировки
 	printf("\n");
 	printf("¬рем€ выполнени€ сортировки: ");
@@ -150,13 +166,17 @@ int main()
 	printf("\n");
 	array = (int*)malloc(size * sizeof(int));
 
+	printf("ћассив случайных чисел: 'input.txt'\n");
 	array[0] = rand();
+	f = fopen("input.txt", "w");
 	for (int i = 0; i < size; i++)
 	{
 		array[i + 1] = array[i] + rand() % 100 + 100;
-		printf("%5d  ", array[i]);
+		fprintf(f, "%d  ", array[i]);
 	}
-	printf("\n");
+	fclose(f);
+	printf("ќтсортированный массив: 'output.txt'\n");
+	f = fopen("output.txt", "w");
 
 	start = clock();                //врем€ до сортировки
 
@@ -176,10 +196,11 @@ int main()
 	}
 	stop = clock();             //врем€ после сортировки
 	for (int i = 0; i < size; i++) {
-		printf("%5d  ", array[i]);
+		fprintf(f, "%d  ", array[i]);
 
 
 	}
+	fclose(f);
 	time = (stop - start) / 1000.0;    //врем€ сортировки
 	printf("\n");
 	printf("¬рем€ выполнени€ сортировки: ");
