@@ -13,200 +13,251 @@ int main()
 	FILE* f;
 	int m, size;
 	int* array;
+	char ch;
 
-	//Сортировка случайных значений по возрастанию
+	do {
+		system("cls");
+		printf("МЕНЮ:\n");
+		printf("1 - Сортировка случайных значений по возрастанию\n");
+		printf("2 - Сортировка случайных значений по убыванию\n");
+		printf("3 - Сортировка возрастающих значений по убыванию\n");
+		printf("4 - Сортировка возрастающих значений по возрастанию\n");
 
-	printf("Введите количество элементов массива: ");
-	scanf("%d", &size);
-	printf("\n");
-	array = (int*)malloc(size * sizeof(int));
-	printf("Массив случайных чисел: 'input.txt'\n");
-	f = fopen("input.txt", "w");
+		printf("ecs - выход\n");
+		ch = _getch();
 
-	for (int i = 0; i < size; i++)
-	{
-		array[i] = rand() - rand();
-		fprintf(f, "%d  ", array[i]);
-	}
-	fclose(f);
-	printf("Отсортированный массив: 'output.txt'\n");
+		switch (ch) {
+		case '1':												//Сортировка случайных значений по возрастанию
+			system("cls");
+			printf("Введите количество элементов массива: ");
+			scanf("%d", &size);
+			printf("\n");
+			array = (int*)malloc(size * sizeof(int));
 
-	f = fopen("output.txt", "w");
+			printf("Массив случайных чисел: 'input.txt'\n");
+			f = fopen("input.txt", "w");
+			for (int i = 0; i < size; i++)
+			{
+				array[i] = rand() - rand();
+				fprintf(f, "%d  ", array[i]);
+			}
+			fclose(f);
+			printf("Отсортированный массив: 'output.txt'\n");
 
-	time_t start = clock();                //время до сортировки
+			f = fopen("output.txt", "w");
 
-	long count = 0;
-	for (int i = 1; i < size; i++)
-	{
-		m = array[i];
-		for (int j = i - 1; j >= 0; j--)
-		{
-			if (array[j] < m)
-				break;
-			array[j + 1] = array[j];
-			array[j] = m;
-			count++;
+			time_t start = clock();                //время до сортировки
+
+			long count = 0;
+			for (int i = 1; i < size; i++)
+			{
+				m = array[i];
+				for (int j = i - 1; j >= 0; j--)
+				{
+					if (array[j] < m)
+						break;
+					array[j + 1] = array[j];
+					array[j] = m;
+					count++;
+				}
+			}
+			time_t stop = clock();             //время после сортировки
+			for (int i = 0; i < size; i++) {
+				fprintf(f, "%d  ", array[i]);
+
+
+			}
+			fclose(f);
+			double time = (stop - start) / 1000.0;    //время сортировки
+			printf("\n");
+			printf("Время выполнения сортировки: ");
+			printf("%lf\n", time);
+			printf("Количество перестановок: ");
+			printf("%o\n", count);
+
+			system("pause");
+			break;
 		}
-	}
-	time_t stop = clock();             //время после сортировки
-	for (int i = 0; i < size; i++) {
-		fprintf(f, "%d  ", array[i]);
-	}
-	fclose(f);
-	double time = (stop - start) / 1000.0;    //время сортировки
-	printf("\n");
-	printf("Время выполнения сортировки: ");
-	printf("%lf\n", time);
-	printf("Количество перестановок: ");
-	printf("%o\n", count);
 
 
 
+		switch (ch) {
+		case '2':												//Сортировка случайных значений по убыванию
+			system("cls");
+			printf("Введите количество элементов массива: ");
+			scanf("%d", &size);
+			printf("\n");
+			array = (int*)malloc(size * sizeof(int));
 
-	//Сортировка случайных значений по убыванию
+			printf("Массив случайных чисел: 'input.txt'\n");
+			f = fopen("input.txt", "w");
+			for (int i = 0; i < size; i++)
+			{
+				array[i] = rand() - rand();
+				fprintf(f, "%d  ", array[i]);
+			}
+			fclose(f);
 
-	printf("Введите количество элементов массива: ");
-	scanf("%d", &size);
-	printf("\n");
-	array = (int*)malloc(size * sizeof(int));
+			printf("Отсортированный массив: 'output.txt'\n");
+			f = fopen("output.txt", "w");
 
-	printf("Массив случайных чисел: 'input.txt'\n");
-	f = fopen("input.txt", "w");
-	for (int i = 0; i < size; i++)
-	{
-		array[i] = rand() - rand();
-		fprintf(f, "%d  ", array[i]);
-	}
-	fclose(f);
-	printf("\n");
+			time_t start = clock();                //время до сортировки
 
-	printf("Отсортированный массив: 'output.txt'\n");
-	f = fopen("output.txt", "w");
-	start = clock();                //время до сортировки
+			long count = 0;
+			for (int i = 1; i < size; i++)
+			{
+				m = array[i];
+				for (int j = i - 1; j >= 0; j--)
+				{
+					if (array[j] > m)
+						break;
 
-	count = 0;
-	for (int i = 1; i < size; i++)
-	{
-		m = array[i];
-		for (int j = i - 1; j >= 0; j--)
-		{
-			if (array[j] > m)
-				break;
+					array[j + 1] = array[j];
+					array[j] = m;
+					count++;
+				}
+			}
+			time_t stop = clock();             //время после сортировки
+			for (int i = 0; i < size; i++) {
+				fprintf(f, "%d  ", array[i]);
 
-			array[j + 1] = array[j];
-			array[j] = m;
-			count++;
+
+			}
+			fclose(f);
+			double time = (stop - start) / 1000.0;    //время сортировки
+			printf("\n");
+			printf("Время выполнения сортировки: ");
+			printf("%lf\n", time);
+			printf("Количество перестановок: ");
+			printf("%o\n", count);
+
+			system("pause");
+			break;
 		}
-	}
-	stop = clock();             //время после сортировки
-	for (int i = 0; i < size; i++) {
-		fprintf(f, "%d  ", array[i]);
-	}
-	fclose(f);
-	time = (stop - start) / 1000.0;    //время сортировки
-	printf("\n");
-	printf("Время выполнения сортировки: ");
-	printf("%lf\n", time);
-	printf("Количество перестановок: ");
-	printf("%o\n", count);
 
 
-	//Сортировка возрастающих значений по убыванию
 
-	printf("Введите количество элементов массива: ");
-	scanf("%d", &size);
-	printf("\n");
-	array = (int*)malloc(size * sizeof(int));
+		switch (ch) {
+		case '3':												//Сортировка возрастающих значений по убыванию
+			system("cls");
+			printf("Введите количество элементов массива: ");
+			scanf("%d", &size);
+			printf("\n");
+			array = (int*)malloc(size * sizeof(int));
 
-	printf("Массив случайных чисел: 'input.txt'\n");
-	array[0] = rand();
-	f = fopen("input.txt", "w");
-	for (int i = 0; i < size; i++)
-	{
-		array[i + 1] = array[i] + rand() % 100 + 100;
-		fprintf(f, "%d  ", array[i]);
-	}
-	fclose(f);
-	printf("Отсортированный массив: 'output.txt'\n");
-	f = fopen("output.txt", "w");
-	start = clock();                //время до сортировки
+			printf("Массив случайных чисел: 'input.txt'\n");
+			array[0] = rand();
+			f = fopen("input.txt", "w");
+			for (int i = 0; i < size; i++)
+			{
+				array[i + 1] = array[i] + rand() % 100 + 100;
 
-	count = 0;
-	for (int i = 1; i < size; i++)
-	{
-		m = array[i];
-		for (int j = i - 1; j >= 0; j--)
-		{
-			if (array[j] > m)
-				break;
 
-			array[j + 1] = array[j];
-			array[j] = m;
-			count++;
+				fprintf(f, "%d  ", array[i]);
+
+			}
+			fclose(f);
+
+			printf("Отсортированный массив: 'output.txt'\n");
+
+			f = fopen("output.txt", "w");
+
+			time_t start = clock();                //время до сортировки
+
+			long count = 0;
+			for (int i = 1; i < size; i++)
+			{
+				m = array[i];
+				for (int j = i - 1; j >= 0; j--)
+				{
+					if (array[j] > m)
+						break;
+
+					array[j + 1] = array[j];
+					array[j] = m;
+					count++;
+				}
+			}
+			time_t stop = clock();             //время после сортировки
+			for (int i = 0; i < size; i++) {
+				fprintf(f, "%d  ", array[i]);
+
+
+			}
+			fclose(f);
+			double time = (stop - start) / 1000.0;    //время сортировки
+			printf("\n");
+			printf("Время выполнения сортировки: ");
+			printf("%lf\n", time);
+			printf("Количество перестановок: ");
+			printf("%o\n", count);
+
+			system("pause");
+			break;
 		}
-	}
-	stop = clock();             //время после сортировки
-	for (int i = 0; i < size; i++) {
-		fprintf(f, "%d  ", array[i]);
-	}
-	fclose(f);
-	time = (stop - start) / 1000.0;    //время сортировки
-	printf("\n");
-	printf("Время выполнения сортировки: ");
-	printf("%lf\n", time);
-	printf("Количество перестановок: ");
-	printf("%o\n", count);
 
 
+		switch (ch) {
+		case '4':												//Сортировка возрастающих значений по возрастанию
+			system("cls");
+			printf("Введите количество элементов массива: ");
+			scanf("%d", &size);
+			printf("\n");
+			array = (int*)malloc(size * sizeof(int));
 
-	//Сортировка возрастающих значений по возрастанию
+			printf("Массив случайных чисел: 'input.txt'\n");
+			array[0] = rand();
+			f = fopen("input.txt", "w");
+			for (int i = 0; i < size; i++)
+			{
+				array[i + 1] = array[i] + rand() % 100 + 100;
 
-	printf("Введите количество элементов массива: ");
-	scanf("%d", &size);
-	printf("\n");
-	array = (int*)malloc(size * sizeof(int));
 
-	printf("Массив случайных чисел: 'input.txt'\n");
-	array[0] = rand();
-	f = fopen("input.txt", "w");
-	for (int i = 0; i < size; i++)
-	{
-		array[i + 1] = array[i] + rand() % 100 + 100;
-		fprintf(f, "%d  ", array[i]);
-	}
-	fclose(f);
-	printf("Отсортированный массив: 'output.txt'\n");
-	f = fopen("output.txt", "w");
+				fprintf(f, "%d  ", array[i]);
 
-	start = clock();                //время до сортировки
+			}
+			fclose(f);
 
-	count = 0;
-	for (int i = 1; i < size; i++)
-	{
-		m = array[i];
-		for (int j = i - 1; j >= 0; j--)
-		{
-			if (array[j] < m)
-				break;
+			printf("Отсортированный массив: 'output.txt'\n");
+			f = fopen("output.txt", "w");
 
-			array[j + 1] = array[j];
-			array[j] = m;
-			count++;
+			time_t start = clock();                //время до сортировки
+
+			long count = 0;
+			for (int i = 1; i < size; i++)
+			{
+				m = array[i];
+				for (int j = i - 1; j >= 0; j--)
+				{
+					if (array[j] < m)
+						break;
+
+					array[j + 1] = array[j];
+					array[j] = m;
+					count++;
+				}
+			}
+			time_t stop = clock();             //время после сортировки
+			for (int i = 0; i < size; i++) {
+				fprintf(f, "%d  ", array[i]);
+
+
+			}
+			fclose(f);
+			double time = (stop - start) / 1000.0;    //время сортировки
+			printf("\n");
+			printf("Время выполнения сортировки: ");
+			printf("%lf\n", time);
+			printf("Количество перестановок: ");
+			printf("%o\n", count);
+
+			system("pause");
+			break;
 		}
-	}
-	stop = clock();             //время после сортировки
-	for (int i = 0; i < size; i++) {
-		fprintf(f, "%d  ", array[i]);
 
 
-	}
-	fclose(f);
-	time = (stop - start) / 1000.0;    //время сортировки
-	printf("\n");
-	printf("Время выполнения сортировки: ");
-	printf("%lf\n", time);
-	printf("Количество перестановок: ");
-	printf("%o\n", count);
+
+	} while (ch != 27);
 
 
 }
